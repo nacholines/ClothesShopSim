@@ -503,15 +503,8 @@ MonoBehaviour:
   canvas: {fileID: 9962499}
   shopItems:
   - {fileID: 11400000, guid: 409aaff6fa656c54fae783121392fcb9, type: 2}
-  - {fileID: 11400000, guid: 409aaff6fa656c54fae783121392fcb9, type: 2}
-  - {fileID: 11400000, guid: 409aaff6fa656c54fae783121392fcb9, type: 2}
-  - {fileID: 11400000, guid: 409aaff6fa656c54fae783121392fcb9, type: 2}
-  - {fileID: 11400000, guid: 409aaff6fa656c54fae783121392fcb9, type: 2}
-  - {fileID: 11400000, guid: 409aaff6fa656c54fae783121392fcb9, type: 2}
-  - {fileID: 11400000, guid: 409aaff6fa656c54fae783121392fcb9, type: 2}
-  - {fileID: 11400000, guid: 409aaff6fa656c54fae783121392fcb9, type: 2}
-  - {fileID: 11400000, guid: 409aaff6fa656c54fae783121392fcb9, type: 2}
-  - {fileID: 11400000, guid: 409aaff6fa656c54fae783121392fcb9, type: 2}
+  - {fileID: 11400000, guid: 2f1abb5c1ed48fe4e95b8d198e838fae, type: 2}
+  - {fileID: 11400000, guid: 224999bfa1454654f8d04bdb10290539, type: 2}
 --- !u!1 &2138630245
 GameObject:
   m_ObjectHideFlags: 0

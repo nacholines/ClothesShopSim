@@ -8,7 +8,8 @@ public class ShopKeeperController : MonoBehaviour, IInteractable
     [SerializeField] ShopWindow shopPrefab;
     [SerializeField] Canvas canvas;
     [SerializeField] List<Item> shopItems;
-    ShopWindow _shop;
+
+    private ShopWindow _shop;
     private Inventory _inventory;
 
 
@@ -32,6 +33,4 @@ public class ShopKeeperController : MonoBehaviour, IInteractable
     {
         return "open shop";
     }
-
-    
 }

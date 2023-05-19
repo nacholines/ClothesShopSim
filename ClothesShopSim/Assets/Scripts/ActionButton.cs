@@ -11,9 +11,9 @@ public class ActionButton : MonoBehaviour
     [SerializeField] private Button button;
 
 
-    public void SetActionButton(string description, Action callback)
+    public void SetActionButton(string description, Action<Item> callback, Item item)
     {
         actionName.text = description;
-        button.onClick.AddListener(() => callback?.Invoke());
+        button.onClick.AddListener(()=> callback?.Invoke(item));
     }
 }

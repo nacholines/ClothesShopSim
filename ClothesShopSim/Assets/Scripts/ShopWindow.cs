@@ -52,20 +52,32 @@ public class ShopWindow : MonoBehaviour
         }
     }
 
-    public void SellShopItem()
+    public void SellShopItem(Item toSell)
+    {
+        _shopKeeperInventory.RemoveItem(toSell.Name);
+        _playerInventory.AddItem(toSell);
+        DeleteItemFromList(toSell);
+    }
+
+    public void BuyPlayerItem(Item toBuy)
     {
 
     }
 
-    public void BuyPlayerItem()
+    private void DeleteItemFromList(Item toDelete)
     {
+        foreach (ItemListing listed in content.GetComponentsInChildren<ItemListing>())
+        {
+            if (listed.Item != toDelete) continue;
 
+            Destroy(listed.gameObject);
+        }
     }
 
 }
 
 public class ShopInteraction
 {
-    public Action callback;
+    public Action<Item> callback;
     public string type;
 }

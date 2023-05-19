@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour, IWallet
     {
         _interactMessage = "Press " + InteractKey.ToString() + " to ";
         _inventory = new Inventory();
-
     }
 
     void Update()
@@ -31,6 +30,7 @@ public class PlayerController : MonoBehaviour, IWallet
         {
             if (_interactable == null) return;
             _interactable.Interact(this);
+            if (_prompt) Destroy(_prompt.gameObject);
         }
     }
     
