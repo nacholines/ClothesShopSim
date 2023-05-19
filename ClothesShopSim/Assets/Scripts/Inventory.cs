@@ -20,9 +20,9 @@ public class Inventory : IInventory
         _inventory.Add(item);
     }
 
-    public void RemoveItem(string itemName)
+    public void RemoveItem(Item toDelete)
     {
-        Item itemToDelete = _inventory.FirstOrDefault(item => item.name == itemName);
+        Item itemToDelete = _inventory.FirstOrDefault(item => item == toDelete);
 
         if (itemToDelete != null)
         {

@@ -9,12 +9,16 @@ public class ShopWindow : MonoBehaviour
     private Inventory _shopKeeperInventory;
     private Inventory _playerInventory;
     [SerializeField] private GameObject ItemListPrefab;
-    [SerializeField] private Button closeButton;
     [SerializeField] private Transform content;
+    [SerializeField] private Button showShopButton;
+    [SerializeField] private Button showPlayerButton;
+    [SerializeField] private Button closeButton;
 
     private void Awake()
     {
         closeButton.onClick.AddListener(CloseWindow);
+        showPlayerButton.onClick.AddListener(ShowSellView);
+        showShopButton.onClick.AddListener(ShowShopView);
     }
     public void OpenShop(Inventory shopKeeperInventory, Inventory playerInventory)
     {
@@ -40,6 +44,7 @@ public class ShopWindow : MonoBehaviour
         }
     }
 
+
     public void ShowPlayerItems()
     {
         foreach (Item item in _playerInventory.GetInventory())
@@ -51,17 +56,30 @@ public class ShopWindow : MonoBehaviour
             instantiatedItem.SetItem(item, shopInteraction);
         }
     }
+    public void ShowShopView()
+    {
+        DeleteAllItemsFromList();
+        ShowShopItems();
+    }
+
+    public void ShowSellView()
+    {
+        DeleteAllItemsFromList();
+        ShowPlayerItems();
+    }
 
     public void SellShopItem(Item toSell)
     {
-        _shopKeeperInventory.RemoveItem(toSell.Name);
+        _shopKeeperInventory.RemoveItem(toSell);
         _playerInventory.AddItem(toSell);
         DeleteItemFromList(toSell);
     }
 
     public void BuyPlayerItem(Item toBuy)
     {
-
+        _playerInventory.RemoveItem(toBuy);
+        _shopKeeperInventory.AddItem(toBuy);
+        DeleteItemFromList(toBuy);
     }
 
     private void DeleteItemFromList(Item toDelete)
@@ -69,7 +87,14 @@ public class ShopWindow : MonoBehaviour
         foreach (ItemListing listed in content.GetComponentsInChildren<ItemListing>())
         {
             if (listed.Item != toDelete) continue;
+            Destroy(listed.gameObject);
+        }
+    }
 
+    private void DeleteAllItemsFromList()
+    {
+        foreach(ItemListing listed in content.GetComponentsInChildren<ItemListing>())
+        {
             Destroy(listed.gameObject);
         }
     }

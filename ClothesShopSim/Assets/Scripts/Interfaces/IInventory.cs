@@ -6,5 +6,5 @@ public interface IInventory
 {
     public List<Item> GetInventory();
     public void AddItem(Item item);
-    public void RemoveItem(string itemName);
+    public void RemoveItem(Item toDelete);
 }
