@@ -1,25 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ShopKeeperController : MonoBehaviour, IInteractable
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    [SerializeField] ShopWindow shopPrefab;
+    [SerializeField] Canvas canvas;
+    [SerializeField] List<Item> shopItems;
+    ShopWindow _shop;
+    private Inventory _inventory;
+
+
+    private void Awake()
     {
+        _inventory = new Inventory();
+        foreach (Item item in shopItems)
+        {
+            _inventory.AddItem(item);
+        }
     }
 
-    public void Interact(PlayerController player)
+    public void Interact(PlayerController controller)
     {
-        OpenShop();
-    }
-
-    public void OpenShop()
-    {
-        Debug.Log("open shop");
+        if (_shop) return;
+        _shop = Instantiate(shopPrefab, canvas.transform).GetComponent<ShopWindow>();
+        _shop.OpenShop(_inventory,controller.Inventory);
     }
 
     public string GetPrompt()
     {
-        return "Open shop";
+        return "open shop";
     }
+
+    
 }

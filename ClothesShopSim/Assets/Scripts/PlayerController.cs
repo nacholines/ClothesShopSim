@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class PlayerController : MonoBehaviour, IInventory
+public class PlayerController : MonoBehaviour, IWallet
 {
-    public float Money;
-    public List<Item> Inventory;
+    private float _money;
     public KeyCode InteractKey = KeyCode.E;
     private string _interactMessage;
     private IInteractable _interactable;
@@ -14,11 +13,16 @@ public class PlayerController : MonoBehaviour, IInventory
     public GameObject promptPrefab;
     public Canvas canvas;
 
+    private Inventory _inventory;
+
+    public Inventory Inventory => _inventory;
 
     
     void Start()
     {
         _interactMessage = "Press " + InteractKey.ToString() + " to ";
+        _inventory = new Inventory();
+
     }
 
     void Update()
@@ -30,22 +34,6 @@ public class PlayerController : MonoBehaviour, IInventory
         }
     }
     
-    public void AddItem(Item item)
-    {
-        Inventory.Add(item);
-        Money -= item.Price;
-    }
-
-    public void RemoveItem(string itemName)
-    {
-        Item itemToDelete = Inventory.FirstOrDefault(item => item.name == itemName);
-
-        if (itemToDelete != null)
-        {
-            Inventory.Remove(itemToDelete);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         IInteractable interactable = other.GetComponent<IInteractable>();
@@ -65,5 +53,17 @@ public class PlayerController : MonoBehaviour, IInventory
     {
         _interactable = null;
         if (_prompt) Destroy(_prompt.gameObject);
+    }
+
+    public float GetBalance()
+    {
+        return _money;
+    }
+
+    public void TakeMoney(float amount)
+    {
+        if (amount - _money < 0) return;
+
+        _money = -amount;
     }
 }
