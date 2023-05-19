@@ -38,5 +38,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _movement += Vector3.right;
         }
+
+        transform.position += _movement * Time.deltaTime * MovementSpeed;
     }
 }
