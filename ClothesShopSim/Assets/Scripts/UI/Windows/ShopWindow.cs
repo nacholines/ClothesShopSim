@@ -87,7 +87,7 @@ public class ShopWindow : WindowBase
         foreach (ItemListing listed in content.GetComponentsInChildren<ItemListing>())
         {
             if (listed.Item != toDelete) continue;
-            Destroy(listed.gameObject);
+            Destroy(listed.gameObject,0.15f);
         }
     }
 

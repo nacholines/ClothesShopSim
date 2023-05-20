@@ -1604,6 +1604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controls: 77000000730000006100000064000000
   movementSpeed: 5
+  animator: {fileID: 345904211}
 --- !u!61 &2138630248
 BoxCollider2D:
   m_ObjectHideFlags: 0

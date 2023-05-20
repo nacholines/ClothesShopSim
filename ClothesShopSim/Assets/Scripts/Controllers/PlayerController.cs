@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour, IWallet
 
     private IInteractable _interactable;
     
-    private PlayerCustomization customization;
+    private PlayerCustomization _customization;
     private PromptMessage _prompt;
     private WardrobeWindow _wardrobe;
     private Inventory _inventory;
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour, IWallet
         _wallet.SetBalance(300);
 
         _canvas = FindObjectOfType<Canvas>();
+        _customization = GetComponent<PlayerCustomization>();
 
     }
 
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour, IWallet
         {
             if (_wardrobe) return;
             _wardrobe = (WardrobeWindow) WindowManager.Instance.OpenWindow(wardrobePrefab);
-            _wardrobe.SetUpWardrobe(_inventory, customization);
+            _wardrobe.SetUpWardrobe(_inventory, _customization);
             _wardrobe.OpenWindow();
         }
     }

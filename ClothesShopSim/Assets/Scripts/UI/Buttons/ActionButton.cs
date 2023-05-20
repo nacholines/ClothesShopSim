@@ -13,8 +13,7 @@ public class ActionButton : MonoBehaviour
 
     public void SetActionButton(string description, Action<Item> callback, Item item)
     {
-        if(actionName)
-            actionName.text = description;
+        if(actionName) actionName.text = description;
         button.onClick.AddListener(()=> callback?.Invoke(item));
     }
 }

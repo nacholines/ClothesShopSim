@@ -12,8 +12,12 @@ public class PlayerMovement : MonoBehaviour
     [Space(1)]
     [SerializeField] float movementSpeed = 5f;
 
-    private Vector3 _movement;
 
+    [Header("Animator")]
+    [Space(1)]
+    [SerializeField] Animator animator;
+
+    private Vector3 _movement;
 
 
     void Update()
@@ -41,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         {
             _movement += Vector3.right;
         }
+
+        animator.SetBool("isMoving", _movement != Vector3.zero);
 
         transform.position += _movement * Time.deltaTime * movementSpeed;
     }
