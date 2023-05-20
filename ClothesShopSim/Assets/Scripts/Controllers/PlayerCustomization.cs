@@ -10,8 +10,11 @@ public class PlayerCustomization : MonoBehaviour, ICustomizable
     [SerializeField] private SpriteRenderer hairSprite;
     [SerializeField] private SpriteRenderer shirtSprite;
     [SerializeField] private SpriteRenderer pantsSprite;
-    
 
+    public Sprite Face => faceSprite.sprite;
+    public Sprite Hair => hairSprite.sprite;
+    public Sprite Shirt => shirtSprite.sprite;
+    public Sprite Pants => pantsSprite.sprite;
     public void EquipItem(Item item)
     {
         switch (item.type)

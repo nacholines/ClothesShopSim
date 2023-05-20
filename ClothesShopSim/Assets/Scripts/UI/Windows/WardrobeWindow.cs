@@ -17,8 +17,16 @@ public class WardrobeWindow : WindowBase
     {
         _playerInventory = playerInventory;
         _playerCustomization = customization;
-
+        SetPlayerCustomization();
         ShowWardrobeItems();
+    }
+
+    private void SetPlayerCustomization()
+    {
+        preview.Face = _playerCustomization.Face;
+        preview.Hair = _playerCustomization.Hair;
+        preview.Shirt = _playerCustomization.Shirt;
+        preview.Pants = _playerCustomization.Pants;
     }
 
     public void ShowWardrobeItems()
