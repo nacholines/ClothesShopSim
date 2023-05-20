@@ -26,7 +26,7 @@ public class ShopKeeperController : MonoBehaviour, IInteractable
     {
         if (_shop) return;
         _shop = Instantiate(shopPrefab, canvas.transform).GetComponent<ShopWindow>();
-        _shop.OpenShop(_inventory,controller.Inventory);
+        _shop.OpenShop(_inventory,controller.Inventory, controller.Wallet);
     }
 
     public string GetPrompt()

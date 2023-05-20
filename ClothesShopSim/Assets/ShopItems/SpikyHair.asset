@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ac5d4e71b9329047a6beb4a3cbda85c, type: 3}
-  m_Name: RedPants
+  m_Name: SpikyHair
   m_EditorClassIdentifier: 
-  Name: Red pant
-  Sprite: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
-  Price: 150
-  Description: Just a pair of red pants, what more do you need?
+  Name: Spiky Hair
+  Sprite: {fileID: 21300000, guid: 57d85013f50359b4fbc49203e31d4671, type: 3}
+  Price: 0
+  Description: 
+  type: 0

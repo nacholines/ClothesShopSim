@@ -9,4 +9,17 @@ public class Item : ScriptableObject
     public Sprite Sprite;
     public float Price;
     public string Description;
+    public Type type;
+
+    public enum Type
+    {
+        HAIR,
+        FACE,
+        SHIRT,
+        PANTS
+    }
 }
+
+
+
+

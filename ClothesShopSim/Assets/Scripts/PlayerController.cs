@@ -7,21 +7,33 @@ public class PlayerController : MonoBehaviour, IWallet
 {
     private float _money;
     public KeyCode InteractKey = KeyCode.E;
+    public KeyCode WardrobeKey = KeyCode.I;
     private string _interactMessage;
     private IInteractable _interactable;
     private PromptMessage _prompt;
     public GameObject promptPrefab;
     public Canvas canvas;
+    [SerializeField] private WardrobeWindow wardrobe;
+    [SerializeField] private PlayerCustomization customization;
 
     private Inventory _inventory;
 
     public Inventory Inventory => _inventory;
 
-    
+
+    private Wallet _wallet;
+
+    public Wallet Wallet => _wallet;
+
+
     void Start()
     {
         _interactMessage = "Press " + InteractKey.ToString() + " to ";
         _inventory = new Inventory();
+        
+        _wallet = new Wallet();
+        _wallet.SetBalance(300);
+
     }
 
     void Update()
@@ -31,6 +43,10 @@ public class PlayerController : MonoBehaviour, IWallet
             if (_interactable == null) return;
             _interactable.Interact(this);
             if (_prompt) Destroy(_prompt.gameObject);
+        }
+        if (Input.GetKeyDown(WardrobeKey))
+        {
+            wardrobe.OpenWardrobe(_inventory, customization);
         }
     }
     
