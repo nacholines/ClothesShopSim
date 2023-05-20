@@ -6,11 +6,11 @@ using UnityEngine;
 public class ShopKeeperController : MonoBehaviour, IInteractable
 {
     [SerializeField] ShopWindow shopPrefab;
-    [SerializeField] Canvas canvas;
     [SerializeField] List<Item> shopItems;
 
     private ShopWindow _shop;
     private Inventory _inventory;
+
 
 
     private void Awake()
@@ -25,8 +25,9 @@ public class ShopKeeperController : MonoBehaviour, IInteractable
     public void Interact(PlayerController controller)
     {
         if (_shop) return;
-        _shop = Instantiate(shopPrefab, canvas.transform).GetComponent<ShopWindow>();
-        _shop.OpenShop(_inventory,controller.Inventory, controller.Wallet);
+        _shop = (ShopWindow) WindowManager.Instance.OpenWindow(shopPrefab);
+        _shop.SetUpShop(_inventory,controller.Inventory, controller.Wallet);
+        _shop.OpenWindow();
     }
 
     public string GetPrompt()

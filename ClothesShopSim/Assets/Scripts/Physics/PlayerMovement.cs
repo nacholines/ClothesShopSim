@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float MovementSpeed = 5f;
+    [Header("Keys")]
+    [Space(1)]
     public KeyCode[] Controls;
-    private Vector3 _movement;
-    public Rigidbody2D Rb;
+    
+    [Header("Values")]
+    [Space(1)]
+    [SerializeField] float movementSpeed = 5f;
 
-    void Start()
-    {
-        Rb = GetComponent<Rigidbody2D>();
-    }
+    private Vector3 _movement;
+
 
 
     void Update()
     {
+        if(WindowManager.Instance.IsAnyWindowOpen) return;
+        
         _movement = Vector3.zero;
 
         if (Input.GetKey(Controls[0]))
@@ -39,6 +42,6 @@ public class PlayerMovement : MonoBehaviour
             _movement += Vector3.right;
         }
 
-        transform.position += _movement * Time.deltaTime * MovementSpeed;
+        transform.position += _movement * Time.deltaTime * movementSpeed;
     }
 }

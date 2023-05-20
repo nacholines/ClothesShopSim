@@ -5,24 +5,29 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour, IWallet
 {
+    [Header("Keys")]
+    [Space(1)]
+    [SerializeField] KeyCode InteractKey = KeyCode.E;
+    [SerializeField] KeyCode WardrobeKey = KeyCode.I;
+
+    [Header("Prefabs")]
+    [Space(1)]
+    [SerializeField] private WardrobeWindow wardrobePrefab;
+    [SerializeField] private PromptBase promptPrefab;
+    
     private float _money;
-    public KeyCode InteractKey = KeyCode.E;
-    public KeyCode WardrobeKey = KeyCode.I;
     private string _interactMessage;
+
     private IInteractable _interactable;
+    
+    private PlayerCustomization customization;
     private PromptMessage _prompt;
-    public GameObject promptPrefab;
-    public Canvas canvas;
-    [SerializeField]private GameObject WardrobePrefab;
-    [SerializeField] private PlayerCustomization customization;
-
+    private WardrobeWindow _wardrobe;
     private Inventory _inventory;
-    public Inventory Inventory => _inventory;
-
-
     private Wallet _wallet;
+    private Canvas _canvas;
+    public Inventory Inventory => _inventory;
     public Wallet Wallet => _wallet;
-
 
     void Start()
     {
@@ -31,6 +36,8 @@ public class PlayerController : MonoBehaviour, IWallet
         
         _wallet = new Wallet();
         _wallet.SetBalance(300);
+
+        _canvas = FindObjectOfType<Canvas>();
 
     }
 
@@ -44,8 +51,10 @@ public class PlayerController : MonoBehaviour, IWallet
         }
         if (Input.GetKeyDown(WardrobeKey))
         {
-            WardrobeWindow wardrobe = Instantiate(WardrobePrefab, canvas.transform).GetComponent<WardrobeWindow>();
-            wardrobe.OpenWardrobe(_inventory, customization);
+            if (_wardrobe) return;
+            _wardrobe = (WardrobeWindow) WindowManager.Instance.OpenWindow(wardrobePrefab);
+            _wardrobe.SetUpWardrobe(_inventory, customization);
+            _wardrobe.OpenWindow();
         }
     }
     
@@ -57,16 +66,20 @@ public class PlayerController : MonoBehaviour, IWallet
             var message = _interactMessage + interactable.GetPrompt();
             _interactable = interactable;
 
-            if (_prompt) return;
-            _prompt = Instantiate(promptPrefab, canvas.transform).GetComponent<PromptMessage>();
-            if (_prompt) _prompt.SetMessage(message);
+            if (_prompt || !_canvas) return;
+            _prompt = (PromptMessage) PromptManager.Instance.ShowPrompt(promptPrefab);
+            if (_prompt)
+            {
+                _prompt.SetMessage(message);
+                _prompt.ShowPrompt();
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         _interactable = null;
-        if (_prompt) Destroy(_prompt.gameObject);
+        if (_prompt) _prompt.HidePrompt();
     }
 
     public float GetBalance()

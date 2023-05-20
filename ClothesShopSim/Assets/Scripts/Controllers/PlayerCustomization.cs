@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCustomization : MonoBehaviour, ICustomizable
 {
+    [Header("Sprites")]
+    [Space(1)]
     [SerializeField] private SpriteRenderer faceSprite;
     [SerializeField] private SpriteRenderer hairSprite;
     [SerializeField] private SpriteRenderer shirtSprite;

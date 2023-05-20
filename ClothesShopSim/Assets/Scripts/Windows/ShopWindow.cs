@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopWindow : MonoBehaviour
+public class ShopWindow : WindowBase
 {
     private Inventory _shopKeeperInventory;
     private Inventory _playerInventory;
@@ -14,26 +14,19 @@ public class ShopWindow : MonoBehaviour
     [SerializeField] private Transform content;
     [SerializeField] private Button showShopButton;
     [SerializeField] private Button showPlayerButton;
-    [SerializeField] private Button closeButton;
-
+  
     private void Awake()
     {
-        closeButton.onClick.AddListener(CloseWindow);
         showPlayerButton.onClick.AddListener(ShowSellView);
         showShopButton.onClick.AddListener(ShowShopView);
     }
-    public void OpenShop(Inventory shopKeeperInventory, Inventory playerInventory, Wallet playerWallet)
+    public void SetUpShop(Inventory shopKeeperInventory, Inventory playerInventory, Wallet playerWallet)
     {
         _shopKeeperInventory = shopKeeperInventory;
         _playerInventory = playerInventory;
         _playerWallet = playerWallet;
 
         ShowShopItems();
-    }
-
-    private void CloseWindow()
-    {
-        Destroy(gameObject);
     }
 
     public void ShowShopItems()

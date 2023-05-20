@@ -4,21 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WardrobeWindow : MonoBehaviour
+public class WardrobeWindow : WindowBase
 {
     private Inventory _playerInventory;
     private PlayerCustomization _playerCustomization;
     [SerializeField] private CustomizationPreview preview;
     [SerializeField] private GameObject equippableItemPrefab;
     [SerializeField] private Transform content;
-    [SerializeField] private Button closeButton;
+    
 
-    private void Awake()
-    {
-        closeButton.onClick.AddListener(CloseWindow);
-    }
-
-    public void OpenWardrobe(Inventory playerInventory, PlayerCustomization customization)
+    public void SetUpWardrobe(Inventory playerInventory, PlayerCustomization customization)
     {
         _playerInventory = playerInventory;
         _playerCustomization = customization;
@@ -42,11 +37,6 @@ public class WardrobeWindow : MonoBehaviour
     {
         preview.EquipItem(item);
         _playerCustomization.EquipItem(item);
-    }
-
-    private void CloseWindow()
-    {
-        Destroy(gameObject);
     }
 
 }
