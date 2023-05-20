@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class EquippableItem : MonoBehaviour
 {
     [SerializeField] private Image image;
-    [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private ActionButton actionButton;
 
     public Item Item => _item;
@@ -17,7 +16,6 @@ public class EquippableItem : MonoBehaviour
     public void SetItem(Item item, ItemInteraction action)
     {
         image.sprite = item.Sprite;
-        itemName.text = item.name;
         actionButton.SetActionButton(action.type, action.callback, item);
     }
 }

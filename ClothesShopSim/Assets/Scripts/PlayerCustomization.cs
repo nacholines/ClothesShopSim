@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCustomization : MonoBehaviour
+public class PlayerCustomization : MonoBehaviour, ICustomizable
 {
     [SerializeField] private SpriteRenderer faceSprite;
     [SerializeField] private SpriteRenderer hairSprite;
     [SerializeField] private SpriteRenderer shirtSprite;
     [SerializeField] private SpriteRenderer pantsSprite;
+    
 
-    public void WearItem(Item item)
+    public void EquipItem(Item item)
     {
         switch (item.type)
         {

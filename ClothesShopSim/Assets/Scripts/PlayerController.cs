@@ -13,16 +13,14 @@ public class PlayerController : MonoBehaviour, IWallet
     private PromptMessage _prompt;
     public GameObject promptPrefab;
     public Canvas canvas;
-    [SerializeField] private WardrobeWindow wardrobe;
+    [SerializeField]private GameObject WardrobePrefab;
     [SerializeField] private PlayerCustomization customization;
 
     private Inventory _inventory;
-
     public Inventory Inventory => _inventory;
 
 
     private Wallet _wallet;
-
     public Wallet Wallet => _wallet;
 
 
@@ -46,6 +44,7 @@ public class PlayerController : MonoBehaviour, IWallet
         }
         if (Input.GetKeyDown(WardrobeKey))
         {
+            WardrobeWindow wardrobe = Instantiate(WardrobePrefab, canvas.transform).GetComponent<WardrobeWindow>();
             wardrobe.OpenWardrobe(_inventory, customization);
         }
     }
@@ -61,7 +60,6 @@ public class PlayerController : MonoBehaviour, IWallet
             if (_prompt) return;
             _prompt = Instantiate(promptPrefab, canvas.transform).GetComponent<PromptMessage>();
             if (_prompt) _prompt.SetMessage(message);
-
         }
     }
 

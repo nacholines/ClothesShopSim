@@ -8,9 +8,15 @@ public class WardrobeWindow : MonoBehaviour
 {
     private Inventory _playerInventory;
     private PlayerCustomization _playerCustomization;
+    [SerializeField] private CustomizationPreview preview;
     [SerializeField] private GameObject equippableItemPrefab;
     [SerializeField] private Transform content;
     [SerializeField] private Button closeButton;
+
+    private void Awake()
+    {
+        closeButton.onClick.AddListener(CloseWindow);
+    }
 
     public void OpenWardrobe(Inventory playerInventory, PlayerCustomization customization)
     {
@@ -25,7 +31,7 @@ public class WardrobeWindow : MonoBehaviour
         foreach (Item item in _playerInventory.GetInventory())
         {
             var wearableInteraction = new ItemInteraction();
-            wearableInteraction.type = "Wear";
+            wearableInteraction.type = "Equip";
             wearableInteraction.callback = SelectItem;
             var instantiatedItem = Instantiate(equippableItemPrefab, content).GetComponent<EquippableItem>();
             instantiatedItem.SetItem(item, wearableInteraction);
@@ -34,7 +40,13 @@ public class WardrobeWindow : MonoBehaviour
 
     public void SelectItem(Item item) 
     {
-        _playerCustomization.WearItem(item);
+        preview.EquipItem(item);
+        _playerCustomization.EquipItem(item);
+    }
+
+    private void CloseWindow()
+    {
+        Destroy(gameObject);
     }
 
 }
