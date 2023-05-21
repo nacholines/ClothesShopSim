@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 393932179}
   - component: {fileID: 393932178}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: OpenInventoryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1024,7 +1024,7 @@ GameObject:
   - component: {fileID: 870794307}
   - component: {fileID: 870794306}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1385,7 +1385,7 @@ GameObject:
   - component: {fileID: 1343643570}
   - component: {fileID: 1343643571}
   m_Layer: 5
-  m_Name: PromptMessage
+  m_Name: InventoryPrompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
