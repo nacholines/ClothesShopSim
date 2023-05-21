@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,8 @@ public class ShopWindow : WindowBase
     [SerializeField] private Transform content;
     [SerializeField] private Button showShopButton;
     [SerializeField] private Button showPlayerButton;
-  
+    [SerializeField] private TextMeshProUGUI playerMoney;
+
     private void Awake()
     {
         showPlayerButton.onClick.AddListener(ShowSellView);
@@ -25,6 +27,7 @@ public class ShopWindow : WindowBase
         _shopKeeperInventory = shopKeeperInventory;
         _playerInventory = playerInventory;
         _playerWallet = playerWallet;
+        playerMoney.text += _playerWallet.GetBalance().ToString();
 
         ShowShopItems();
     }

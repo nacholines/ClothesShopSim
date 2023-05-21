@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ac5d4e71b9329047a6beb4a3cbda85c, type: 3}
-  m_Name: SwooshHair
+  m_Name: Face 6
   m_EditorClassIdentifier: 
-  Name: Swoosh Hair
-  Sprite: {fileID: 21300000, guid: f336f33969ff82246ae8d066f825395f, type: 3}
+  Name: 'Face 6 '
+  Sprite: {fileID: 21300000, guid: 2018b9e9415ae454eac46d0a5fee14f9, type: 3}
   Price: 0
   Description: 
-  type: 0
+  type: 1

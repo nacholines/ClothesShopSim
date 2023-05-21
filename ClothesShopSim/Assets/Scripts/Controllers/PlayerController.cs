@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour, IWallet
         _inventory = new Inventory();
         
         _wallet = new Wallet();
-        _wallet.SetBalance(300);
+        _wallet.SetBalance(3000);
 
         _canvas = FindObjectOfType<Canvas>();
         _customization = GetComponent<PlayerCustomization>();
