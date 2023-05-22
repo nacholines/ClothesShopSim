@@ -21,6 +21,10 @@ public class ItemListing : MonoBehaviour
     {
         _item = item;
         image.sprite = item.Sprite;
+        float aspectRatio = image.sprite.rect.width / image.sprite.rect.height;
+        image.SetNativeSize();
+        AspectRatioFitter fitter = image.GetComponent<AspectRatioFitter>();
+        fitter.aspectRatio = aspectRatio;
         description.text = item.Description;
         itemName.text = item.Name;
         price.text = item.Price.ToString();

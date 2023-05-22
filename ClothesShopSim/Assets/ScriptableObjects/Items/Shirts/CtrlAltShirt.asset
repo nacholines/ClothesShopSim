@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CtrlAltShirt
   m_EditorClassIdentifier: 
   Name: Ctrl Alt Shirt
-  Sprite: {fileID: 21300000, guid: fc317ced6eaa9154ba984158c136755e, type: 3}
+  Sprite: {fileID: 21300000, guid: cde4a40d93317fc4ca01abd63fbc878b, type: 3}
   Price: 150
   Description: Don't do what this shirt says...
   type: 2

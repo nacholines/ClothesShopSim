@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlueGoldShirt
   m_EditorClassIdentifier: 
   Name: Blue Gold Shirt
-  Sprite: {fileID: 21300000, guid: fc317ced6eaa9154ba984158c136755e, type: 3}
+  Sprite: {fileID: 21300000, guid: 9405c84d30f6cb844a5c2a3206d7e42b, type: 3}
   Price: 350
   Description: Only winners use this shirt!
   type: 2
