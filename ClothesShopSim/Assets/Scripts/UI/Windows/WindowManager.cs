@@ -15,6 +15,7 @@ public class WindowManager : MonoBehaviour
     {
         _canvas = FindObjectOfType<Canvas>();
     }
+
     public static WindowManager Instance
     {
         get

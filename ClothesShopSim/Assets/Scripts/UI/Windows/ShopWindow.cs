@@ -15,7 +15,7 @@ public class ShopWindow : WindowBase
     [SerializeField] private Transform content;
     [SerializeField] private Button showShopButton;
     [SerializeField] private Button showPlayerButton;
-    [SerializeField] private TextMeshProUGUI playerMoney;
+    [SerializeField] private MoneyDisplay moneyDisplay;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class ShopWindow : WindowBase
         _shopKeeperInventory = shopKeeperInventory;
         _playerInventory = playerInventory;
         _playerWallet = playerWallet;
-        playerMoney.text += _playerWallet.GetBalance().ToString();
+        moneyDisplay.UpdateMoneyAmount(_playerWallet.GetBalance());
 
         ShowShopItems();
     }
@@ -75,6 +75,7 @@ public class ShopWindow : WindowBase
         _playerInventory.AddItem(toSell);
         DeleteItemFromList(toSell);
         _playerWallet.TakeMoney(toSell.Price);
+        moneyDisplay.UpdateMoneyAmount(_playerWallet.GetBalance());
     }
 
     public void BuyPlayerItem(Item toBuy)
@@ -83,6 +84,7 @@ public class ShopWindow : WindowBase
         _shopKeeperInventory.AddItem(toBuy);
         DeleteItemFromList(toBuy);
         _playerWallet.AddMoney(toBuy.Price);
+        moneyDisplay.UpdateMoneyAmount(_playerWallet.GetBalance());
     }
 
     private void DeleteItemFromList(Item toDelete)

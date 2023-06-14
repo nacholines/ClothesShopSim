@@ -30,6 +30,7 @@ public class PromptMessage : PromptBase
     {
         base.HidePrompt();
         message.gameObject.SetActive(false);
+
     }
 
 }
